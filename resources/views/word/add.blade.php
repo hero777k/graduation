@@ -9,7 +9,7 @@
 @section('content')
     <!-- 戻るボタン -->
     <div class="input-group-append">
-    <a href="{{ route('item.index') }}" class="btn btn-default">戻る</a>
+    <a href="{{ route('word.index') }}" class="btn btn-default">戻る</a>
     </div>
     <br>
     <!-- 登録フォーム -->

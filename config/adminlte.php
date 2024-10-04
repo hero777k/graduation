@@ -292,7 +292,7 @@ return [
     'menu' => [
         [
             'text' => '登録単語一覧',
-            'url'  => 'items',
+            'url'  => 'words',
             'icon' => 'fas fa-bookmark',
         ],
 

@@ -10,7 +10,7 @@
 @section('content')
     <!-- 戻るボタン -->
     <div class="input-group-append">
-    <a href="{{ route('item.index') }}" class="btn btn-default">戻る</a>
+    <a href="{{ route('word.index') }}" class="btn btn-default">戻る</a>
     </div>
     <br>
     <!-- 編集フォーム -->
@@ -27,33 +27,33 @@
             @endif
 
         <div class="card card-primary">
-            <form action="{{ route('item.update', $item->id) }}" method="POST" enctype="multipart/form-data" onsubmit="return confirmUpdate();">
+            <form action="{{ route('word.update', $word->id) }}" method="POST" enctype="multipart/form-data" onsubmit="return confirmUpdate();">
                 @csrf
                 @method('PUT')
                 <div class="card-body">
                     <label for="id">ID:</label>
-                    <span class="id-display">{{ $item->id }}</span>
+                    <span class="id-display">{{ $word->id }}</span>
 
                     <div class="form-group">
                         <label for="name">単語</label>
-                        <input type="text" name="name" id="name" value="{{ $item->name }}" class="form-control">
+                        <input type="text" name="name" id="name" value="{{ $word->name }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="type">品詞</label>
                         <select name="type" id="type" class="form-control">
-                            <option value="動詞" {{ $item->type == "動詞" ? "selected" : "" }} >動詞</option>
-                            <option value="名詞" {{ $item->type == "名詞" ? "selected" : "" }} >名詞</option>
-                            <option value="形容詞" {{ $item->type == "形容詞" ? "selected" : "" }} >形容詞</option>
-                            <option value="副詞" {{ $item->type == "副詞" ? "selected" : "" }} >副詞</option>
-                            <option value="前置詞" {{ $item->type == "前置詞" ? "selected" : "" }} >前置詞</option>
-                            <option value="接続詞" {{ $item->type == "接続詞" ? "selected" : "" }} >接続詞</option>
+                            <option value="動詞" {{ $word->type == "動詞" ? "selected" : "" }} >動詞</option>
+                            <option value="名詞" {{ $word->type == "名詞" ? "selected" : "" }} >名詞</option>
+                            <option value="形容詞" {{ $word->type == "形容詞" ? "selected" : "" }} >形容詞</option>
+                            <option value="副詞" {{ $word->type == "副詞" ? "selected" : "" }} >副詞</option>
+                            <option value="前置詞" {{ $word->type == "前置詞" ? "selected" : "" }} >前置詞</option>
+                            <option value="接続詞" {{ $word->type == "接続詞" ? "selected" : "" }} >接続詞</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="detail">意味</label>
-                        <input type="text" class="form-control" id="detail" name="detail" value="{{ $item->detail }}">
+                        <input type="text" class="form-control" id="detail" name="detail" value="{{ $word->detail }}">
                     </div>
                 </div>
         </div>
@@ -71,7 +71,7 @@
         </script>
 
         <!-- 削除ボタン -->
-        <form action="{{ route('item.destroy', $item->id) }}" method="POST" style="display:inline;" onsubmit="return confirmDeletion();">
+        <form action="{{ route('word.destroy', $word->id) }}" method="POST" style="display:inline;" onsubmit="return confirmDeletion();">
             @csrf
             @method('DELETE')
             <div class="input-group-append">
