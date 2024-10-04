@@ -19,9 +19,9 @@ class WordFactory extends Factory
     {
         return [
             'user_id'=>User::factory(),
-            'name'=>fake()->word,
+            'name'=>fake()->word(),
             'type'=>'副詞',
-            'detail'=>fake()->sentence,
+            'detail'=>fake()->realText(10),
             'memorized'=>fake()->boolean(50),
         ];
     }

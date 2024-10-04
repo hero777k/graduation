@@ -293,12 +293,18 @@ return [
         [
             'text' => '登録単語一覧',
             'url'  => 'words',
+            'icon' => 'fas fa-tag',
+        ],
+
+        [
+            'text' => '未暗記単語一覧',
+            'url'  => 'words/unmemorized-words',
             'icon' => 'fas fa-bookmark',
         ],
 
         [
-            'text' => '暗記単語一覧',
-            'url'  => 'words',
+            'text' => '暗記済単語一覧',
+            'url'  => 'words/memorized-words',
             'icon' => 'far fa-bookmark',
         ],
 

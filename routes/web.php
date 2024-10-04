@@ -24,8 +24,14 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('words')->group(function () {
-    /* 単語一覧 */
+    /* 登録単語一覧 */
     Route::get('/', [App\Http\Controllers\WordController::class, 'index'])->name('word.index');
+    /* 暗記した単語を送信 */
+    Route::put('/memorized', [App\Http\Controllers\WordController::class, 'memorized'])->name('word.memorized');
+    /* 暗記単語一覧 */
+    Route::get('/memorized-words', [App\Http\Controllers\WordController::class, 'showMemorizedWords'])->name('memorized.words'); 
+    /* 未暗記単語一覧 */
+    Route::get('/unmemorized-words', [WordController::class, 'showUnmemorizedWords'])->name('unmemorized.words');
     /* 単語登録 */
     Route::get('/add', [App\Http\Controllers\WordController::class, 'add']);
     Route::post('/add', [App\Http\Controllers\WordController::class, 'add']);
@@ -34,4 +40,5 @@ Route::prefix('words')->group(function () {
     Route::put('/{id}', [App\Http\Controllers\WordController::class, 'update'])->name('word.update');
     /* 単語削除 */
     Route::delete('/{id}', [App\Http\Controllers\WordController::class, 'destroy'])->name('word.destroy');
+
 });

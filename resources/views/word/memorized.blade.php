@@ -1,24 +1,24 @@
 @extends('adminlte::page')
 
-@section('title', '登録単語一覧')
+@section('title', '暗記単語一覧')
 
 @section('content_header')
-    <h1>登録単語一覧</h1>
+    <h1>暗記単語一覧</h1>
 @stop
 
 @section('content')
 
         <!-- 絞り込み・フリーワード検索フォーム -->
-        <form method="GET" action="{{ route('word.index') }}" class="mb-3">
+        <form method="GET" action="{{ route('memorized.words') }}">
             <div class="input-group-append">
                 <div class="col-md-3">
                     <label for="type" class="label-text">品詞</label>
                     <br>
-                    <select name="type" id="type" class="form-select">
+                    <select name="type">
                         <option value="">全て</option>
-                        @foreach($types as $t)
-                            <option value="{{ $t->type }}" {{ $selectedType == $t->type ? 'selected' : '' }}>
-                                {{ $t->type }}
+                        @foreach($types as $type)
+                            <option value="{{ $type->type }}" {{ $selectedType == $type->type ? 'selected' : '' }}>
+                                {{ $type->type }}
                             </option>
                         @endforeach
                     </select>
@@ -29,30 +29,29 @@
 
                 <div class="col-md-3">
                     <label for="keyword" class="label-text">フリーワード</label>
-                    <input type="text" name="keyword" id="keyword" class="form-control" value="{{ request('keyword') }}">
+                    <input type="text" name="keyword" id="keyword" class="form-control" value="{{ old('keyword', $keyword) }}">
                 </div>
 
                 <div class="col-md-3 d-flex align-items-end">
                 <button type="submit" class="btn btn-secondary">絞り込む</button>
                 </div>
             </div>
-        </form> 
+        </form>
+
+        @if($words->isEmpty())
+            <p>覚えた単語はありません。</p>
+        @endif
+    <br>    
 
     <div class="row">
         <div class="col-12">
-            <form action="{{route('word.memorized')}}" method="post">
+            <form action="{{route('memorized.words')}}" method="get">
             @csrf
-            @method('PUT')
+            @method('GET')
             <div class="card">
-                <div class="card-header d-flex align-items-center justify-content-between">
-                    <h3 class="card-title mb-0">登録単語一覧</h3>
-                    <div>
-                        <a href="{{ route('unmemorized.words') }}" class="btn btn-link mr-5"> >>覚えていない単語を見る</a>
-                        <button type="submit" class="btn btn-success">選択した単語を送信</button>
-                    </div>
-                    <a href="{{ url('words/add') }}" class="btn btn-default">単語登録</a>
+                <div class="card-header">
+                    <h3 class="card-title">暗記単語一覧</h3>
                 </div>
-            </div>
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
                         <thead>
@@ -61,7 +60,6 @@
                                 <th>単語</th>
                                 <th>品詞</th>
                                 <th>意味</th>
-                                <th>覚えた!</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -71,10 +69,6 @@
                                     <td>{{ $word->name }}</td>
                                     <td>{{ $word->type }}</td>
                                     <td>{{ $word->detail }}</td>
-                                    <td>
-                                        <input type='hidden' name="words[{{ $word->id }}]" value='0'>
-                                        <input type="checkbox" name="words[{{ $word->id }}]" value="1" {{$word->memorized == 1 ? "checked": "" }}>
-                                    </td>
                                     <td><a href="{{ route('word.edit', $word->id) }}" class="btn btn-default"> 編集 / 削除 </a></td>
                                 </tr>
                             @endforeach
