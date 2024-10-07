@@ -53,13 +53,13 @@
                     <h3 class="card-title">暗記単語一覧</h3>
                 </div>
                 <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
+                    <table class="table table-hover text-nowrap fixed-table">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>単語</th>
                                 <th>品詞</th>
-                                <th>意味</th>
+                                <th style="width: 200px;">意味</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,7 +68,7 @@
                                     <td>{{ $word->id }}</td>
                                     <td>{{ $word->name }}</td>
                                     <td>{{ $word->type }}</td>
-                                    <td>{{ $word->detail }}</td>
+                                    <td class="text-truncate" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">{{ $word->detail }}</td>
                                     <td><a href="{{ route('word.edit', $word->id) }}" class="btn btn-default"> 編集 / 削除 </a></td>
                                 </tr>
                             @endforeach
