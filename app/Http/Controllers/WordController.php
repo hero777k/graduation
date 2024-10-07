@@ -68,6 +68,8 @@ class WordController extends Controller
                 'detail' => $request->detail,
             ]);
 
+            session()->flash('success', '単語が正常に登録されました！');
+
             return redirect('/words');
         }
 
@@ -101,6 +103,8 @@ class WordController extends Controller
 
         $word->save();
 
+        session()->flash('success', '単語が正常に更新されました！');
+
         return redirect()->route('word.index');
     }        
 
@@ -112,6 +116,9 @@ class WordController extends Controller
         {
             $word = word::findOrFail($id);
             $word->delete();
+
+            session()->flash('success', '単語が正常に削除されました！');
+
             return redirect()->route('word.index');
         }
 
