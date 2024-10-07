@@ -57,6 +57,7 @@ class WordController extends Controller
             // バリデーション
             $this->validate($request, [
                 'name' => 'required|max:100',
+                'detail' => 'required|max:65535'
             ]);
 
             // 単語登録
@@ -87,6 +88,11 @@ class WordController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required|max:100',
+            'detail' => 'required|max:65535'
+        ]);
+
         $word = word::findOrFail($id); 
 
         $word->name = $request->input('name');
