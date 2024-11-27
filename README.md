@@ -1,43 +1,31 @@
-## 商品管理システム
+# セルフ単語帳システム
 
-### 環境構築手順
+## 概要
+このシステムでは、セルフの単語帳を作成することができます。
+単語帳一覧画面では、登録単語の確認ができます。
+また、覚えた単語にはチェックを付けて、登録すると暗記/未暗記単語に分けることができ、
+登録単語一覧と未暗記単語一覧を表示することができます。
+単語登録画面では、単語の新規登録ができます。
+単語編集画面では、登録単語の編集や削除を行うことができます。
 
-* Gitクローン
-* .env.example をコピーして .env を作成
-* MySQLのデータベース作成（名前：item_management）
-* Macの場合 .env の DB_PASSWORD を root に修正（Windowsは修正不要）
+## 主な機能
+-単語登録機能
+-単語編集・削除機能
+-暗記単語登録機能
 
-    ```INI
-    DB_PASSWORD=root
-    ```
+## 開発環境
+PHP 
+My SQL 
+Laravel 
 
-* APP_KEY生成
+## 設計書
+[設計書ページへ]https://drive.google.com/drive/folders/1G4cOaQTIO05bTTN4-LudJo8t7XTKN6uB?usp=drive_link
 
-    ```console
-    php artisan key:generate
-    ```
+## システム閲覧
+[アプリケーションページへ]https://self-wordbook-c5862a82d123.herokuapp.com/login
 
-* Composerインストール
+### テストアカウント情報
+メールアドレス：test1@example.com
+パスワード：12345678
 
-    ```console
-    composer install
-    ```
-
-* フロント環境構築
-
-    ```console
-    npm ci
-    npm run build
-    ```
-
-* マイグレーション
-
-    ```console
-    php artisan migrate
-    ```
-
-* 起動
-
-    ```console
-    php artisan serve
-    ```
+## 
