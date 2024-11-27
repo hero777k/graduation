@@ -14,9 +14,9 @@
 -暗記単語登録機能
 
 ## 開発環境
-PHP 
-My SQL 
-Laravel 
+PHP 8.2.0
+My SQL 5.7.39
+Laravel 10.48.22
 
 ## 設計書
 [設計書ページへ]https://drive.google.com/drive/folders/1G4cOaQTIO05bTTN4-LudJo8t7XTKN6uB?usp=drive_link
